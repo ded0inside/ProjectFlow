@@ -1,0 +1,14 @@
+<div class="form-container">
+    <form class="sign-in-form" [formGroup]="signInForm" (ngSubmit)="handleSignIn()">
+        <h2>Sign In</h2>
+        <label for="login">
+            Login: 
+            <input type="text" placeholder="Enter your username or email" formControlName="login">
+        </label>
+        <label for="password">
+            Password: 
+            <input type="password" placeholder="Enter your password" formControlName="password">
+        </label>
+        <button class="submit-btn" type="submit" [disabled]="!signInForm.valid">Sign in</button>
+    </form>
+</div>

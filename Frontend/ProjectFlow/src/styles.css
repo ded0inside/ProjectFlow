@@ -1,0 +1,78 @@
+/* projectflow-colors.css */
+
+/* Base Colors */
+:root {
+    --primary-color: #2E7167; /* Teal Green */
+    --secondary-color: #3BB28E; /* Light Green */
+    --dark-accent-color: #1C3332; /* Dark Gray/Green */
+    --light-accent-color: #C5E1E1; /* Light Gray */
+    --highlight-color: #FFFFFF; /* White */
+    --background-color: #EBF0EF; /* Very light grey background */
+    --nav-link-color: #FFFFFF;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--dark-accent-color);
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* Layout Styles
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+} */
+
+.container {
+    text-align: center;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+
+.button-primary {
+    background-color: var(--primary-color);
+    color: var(--highlight-color);
+    border: none;
+    padding: 15px 30px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.button-primary:hover {
+    background-color: var(--secondary-color);
+}
+
+.button-secondary{
+    background-color: var(--secondary-color);
+    color: var(--highlight-color);
+    padding: 10px 5px;
+    border-radius: 10px;
+    font-size: 1rem;
+    border: none;
+    margin-top: auto;
+}
+
+.main-content {
+    flex: 1; /* Takes up remaining space */
+    padding: 20px;
+}

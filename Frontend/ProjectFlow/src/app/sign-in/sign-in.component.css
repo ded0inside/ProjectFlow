@@ -1,0 +1,64 @@
+/* Form container */
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin-top: 30px;
+}
+
+/* Sign In Form styles */
+.sign-in-form {
+    background-color: var(--highlight-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--light-accent-color);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 320px; /* Square-like shape */
+    height: 320px; /* Square-like shape */
+}
+
+.sign-in-form h2 {
+    color: var(--primary-color);
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.sign-in-form label {
+    font-weight: 500;
+    color: var(--dark-accent-color);
+}
+
+.sign-in-form input {
+    padding: 10px;
+    border: 1px solid var(--light-accent-color);
+    border-radius: 5px;
+    width: 100%;
+    background-color: var(--highlight-color);
+    font-size: 1rem;
+    outline: none;
+}
+
+.sign-in-form input:focus {
+    border-color: var(--secondary-color);
+}
+
+/* Submit Button */
+.submit-btn {
+    background-color: var(--secondary-color);
+    color: var(--highlight-color);
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--highlight-color);
+}
