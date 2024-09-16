@@ -1,0 +1,38 @@
+<div class="d-flex" id="wrapper">
+    <!-- Sidebar -->
+    <div id="sidebar" class="border-right" [ngClass]="{'sidebar-expanded': isSidebarOpen, 'sidebar-collapsed': !isSidebarOpen}">
+      <div class="sidebar-heading" (click)="toggleSidebar()">
+        <img src="logo.png" alt="Logo" class="sidebar-logo">
+        <span class="sidebar-name" *ngIf="isSidebarOpen">ProjectFlow</span>
+      </div>
+      <div class="list-group list-group-flush">
+        <a routerLink="/dashboard" class="list-group-item list-group-item-action " routerLinkActive="active">
+          <i class="fas fa-home"></i>
+          <span class="link-text" *ngIf="isSidebarOpen">Dashboard</span>
+        </a>
+        <a routerLink="/me" class="list-group-item list-group-item-action" routerLinkActive="active">
+            <i class="fas fa-thin fa-user"></i>
+          <span class="link-text" *ngIf="isSidebarOpen">Profile</span>
+        </a>
+        <a routerLink="/tasks" class="list-group-item list-group-item-action " routerLinkActive="active">
+          <i class="fas fa-tasks"></i>
+          <span class="link-text" *ngIf="isSidebarOpen">Tasks</span>
+        </a>
+        <a routerLink="/settings" class="list-group-item list-group-item-action " routerLinkActive="active">
+          <i class="fas fa-cog"></i>
+          <span class="link-text" *ngIf="isSidebarOpen">Settings</span>
+        </a>
+        <button class="list-group-item list-group-item-action">
+          <i class="fas fa-sign-out-alt"></i>
+          <span class="link-text" *ngIf="isSidebarOpen">Logout</span>
+        </button>
+      </div>
+    </div>
+    
+  
+    <!-- Main content -->
+    <div id="content" class="container p-4 w-100">
+      <router-outlet></router-outlet>  
+    </div>
+  </div>
+  

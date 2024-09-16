@@ -3,13 +3,14 @@
 /* Base Colors */
 :root {
     --primary-color: #2E7167; /* Teal Green */
+    --primary-color-glow: #2E7167; /* Same Teal Green for glow effect */
     --secondary-color: #3BB28E; /* Light Green */
     --dark-accent-color: #1C3332; /* Dark Gray/Green */
     --light-accent-color: #C5E1E1; /* Light Gray */
     --highlight-color: #FFFFFF; /* White */
     --background-color: #EBF0EF; /* Very light grey background */
-    --nav-link-color: #FFFFFF;
 }
+
 
 html, body {
     height: 100%;
@@ -76,3 +77,4 @@ body {
     flex: 1; /* Takes up remaining space */
     padding: 20px;
 }
+
