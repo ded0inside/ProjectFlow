@@ -11,6 +11,14 @@
     --background-color: #EBF0EF; /* Very light grey background */
 }
 
+input.form-control:focus, 
+textarea.form-control:focus, 
+select.form-control:focus {
+  border-color: var(--secondary-color); /* Apply the secondary color */
+  box-shadow: 0 0 0 0.25rem rgba(59, 178, 142, 0.25); /* Optional shadow */
+  outline: none; /* Remove default focus outline */
+}
+
 
 html, body {
     height: 100%;

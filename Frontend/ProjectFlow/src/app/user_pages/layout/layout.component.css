@@ -67,7 +67,20 @@
   }
   
   /* Active link styling */
-  .list-group-item.active {
+  /* .list-group-item.active {
     background-color: var(--dark-accent-color);
+  } */
+  .list-group-item::before {
+    content: '  ';
+    margin-right: 10px;
+    font-size: 30px;
+    display: inline-block;
+    vertical-align: middle;
   }
-  
+.list-group-item.active::before {
+    content: '| ';
+    margin-right: 10px;
+    font-size: 30px;
+    display: inline-block;
+    vertical-align: middle;
+}

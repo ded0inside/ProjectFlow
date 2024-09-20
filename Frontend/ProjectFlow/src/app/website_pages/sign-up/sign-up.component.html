@@ -1,25 +1,209 @@
-<div class="form-container" [formGroup]="signUpForm" (ngSubmit)="handleSignUp()">
-    <form class="sign-up-form">
+<div class="container form-control p-4" style="max-width: 600px;">
+    <form class="sign-in-form" [formGroup]="signUpForm" (ngSubmit)="handleSignUp()">
+        
         <h2>Sign Up</h2>
+        
+        <!-- Firstname and Surename group -->
+        <div class="input-group mt-3 mb-3">
+            
+            <!-- Title choosing menu -->
+            <button 
+                id="titleButton"
+                type="button" 
+                class="input-group-text 
+                dropdown-toggle" 
+                data-bs-toggle="dropdown"
+                [ngClass]="!titleTouched ? '' : (signUpForm.value.title !== '' ? 'is-valid' : 'is-invalid')"
+                (click)="touchTitle()"
+            >
+                {{ signUpForm.get('title')?.value || 'Title' }}
+            </button>
+            <div 
+                class="invalid-feedback d-block"
+                *ngIf="checkClass()"
+            >
+                *Firstname is required.
+            </div>
+            
+            <ul class="dropdown-menu">
+                <li><button class="dropdown-item" (click)="changeTitle('Mr.')">Mr.</button></li>
+                <li><button class="dropdown-item" (click)="changeTitle('Mrs.')">Mrs.</button></li>
+                <li><button class="dropdown-item" (click)="changeTitle('Diverse')">Diverse</button></li>
+            </ul>
+            
+            <!-- Firstname input -->
+            <div class="form-floating">
 
-        <label for="name">Name:
-            <input type="text" id="name" formControlName="name" placeholder="Enter your name"></label>
+                <input 
+                    formControlName="name" 
+                    type="text" 
+                    class="form-control" 
+                    id="first-name" 
+                    placeholder="Enter first name" 
+                    [ngClass]="is_valid('name')"
+                >
+                <label for="first-name">First name</label>
+                  
+            </div>
+            <!-- Firstname error messages -->
+            <div 
+                class="invalid-feedback d-block"
+                *ngIf="firstname?.errors?.['required'] && firstname?.touched"
+            >
+                *Firstname is required.
+            </div>
+            <div 
+                class="invalid-feedback d-block" 
+                *ngIf="firstname?.errors?.['pattern'] && firstname?.touched"
+            >
+                *Firstname should contain only alphabetic characters and spaces.
+            </div>
+            <div 
+                class="invalid-feedback d-block" 
+                *ngIf="firstname?.errors?.['minlength'] && firstname?.touched"
+            >
+                *Firstname must be at least 2 characters long.
+            </div>
+            <div 
+                class="invalid-feedback d-block" 
+                *ngIf="firstname?.errors?.['maxlength'] && firstname?.touched"
+            >
+                *Firstname cannot exceed 30 characters.
+            </div>
+            
+            <!-- Surename input -->
+            <div class="form-floating">
+                <input 
+                    formControlName="surename" 
+                    type="text" 
+                    class="form-control" 
+                    id="last-name" 
+                    placeholder="Enter last name"
+                    [ngClass]="is_valid('surename')" 
+                >
+                <label for="last-name">Last name</label>
+            </div>
+            <!-- Surename error messages -->
+            <div 
+                class="invalid-feedback d-block"
+                *ngIf="surename?.errors?.['required'] && surename?.touched"
+            >
+                *Surename is required.
+            </div>
+            <div 
+                class="invalid-feedback d-block" 
+                *ngIf="surename?.errors?.['pattern'] && surename?.touched"
+            >
+                *Surename should contain only alphabetic characters and spaces.
+            </div>
+            <div 
+                class="invalid-feedback d-block" 
+                *ngIf="surename?.errors?.['minlength'] && surename?.touched"
+            >
+                *Surename must be at least 2 characters long.
+            </div>
+            <div 
+                class="invalid-feedback d-block" 
+                *ngIf="surename?.errors?.['maxlength'] && surename?.touched"
+            >
+                *Surename cannot exceed 30 characters.
+            </div>
+        
+        </div>
+        
+        <!-- Block with username and email -->
+        <div class="row mt-3 mb-3">
+        
+            <!-- Username input -->
+            <div class="col input-group">
+                <span class="input-group-text">&#64;</span>
+                <div class="form-floating ">
+                    <input 
+                        formControlName="username" 
+                        type="text" 
+                        class="form-control" 
+                        id="username" 
+                        placeholder="Enter username"
+                        [ngClass]="is_valid('username')"
+                    >
+                    <label for="username">Username</label>
+                    
+                </div>
+            </div>
+            <div class="invalid-feedback d-block" 
+                        *ngIf="username?.errors?.['required'] && confirmPassword?.touched">
+                        *Username is required
+            </div>
+            
+            <!-- Email input -->
+            <div class="col input-group">
+                <div class="form-floating">
+                    <input 
+                        formControlName="email" 
+                        type="email" 
+                        class="form-control" 
+                        id="email" 
+                        placeholder="Enter email"
+                        [ngClass]="is_valid('email')"
+                    >
+                    <label for="email">Email</label>
+                </div> 
+            </div>
+            <div 
+                class="invalid-feedback d-block" 
+                *ngIf="email?.errors?.['required'] && confirmPassword?.touched"
+            >
+                *Email is required
+            </div>
+            <div 
+                class="invalid-feedback d-block" 
+                *ngIf="email?.errors?.['email'] && confirmPassword?.touched"
+            >
+                *Email is invalid
+            </div>
 
-        <label for="surename">Surename:
-            <input type="text" id="surename" formControlName="surename" placeholder="Enter your surename"></label>
+        </div>
 
-        <label for="username">Username:
-        <input type="text" id="username" formControlName="username" placeholder="Enter your username"></label>
+        <!-- Block with passwords  -->
+        <div class="row mt-3 mb-3">
 
-        <label for="email">Email:
-        <input type="email" id="email" formControlName="email" placeholder="Enter your email"></label>
+            <!-- Password input  -->
+            <div class="col input-group">
+                <div class="form-floating">
+                    <input 
+                        formControlName="password" 
+                        type="password" 
+                        class="form-control" 
+                        id="password" 
+                        placeholder="Enter password"
+                        [ngClass]="is_valid('password')"
+                    >
+                    <label for="password">Password</label>
+                    <div class="invalid-feedback" *ngIf="password?.errors?.['required'] && password?.touched">*Password is required</div>
+                </div>
+            </div>
 
-        <label for="password">Password:
-        <input type="password" id="password" formControlName="password" placeholder="Enter your password"></label>
+            <!-- Confirm password input  -->
+            <div class="col input-group">
+                <div class="form-floating">
+                    <input 
+                        formControlName="confirmPassword" 
+                        type="password" 
+                        class="form-control" 
+                        id="confirmPassword" 
+                        placeholder="Confirm password" 
+                        [ngClass]="is_valid('confirmPassword')"
+                    >
+                    <label for="confirmPassword">Confirm password</label>
+                    <div class="invalid-feedback" *ngIf="confirmPassword?.errors?.['passwordMismatch'] && confirmPassword?.touched">*Passwords should match</div>
+                    <div class="invalid-feedback" *ngIf="confirmPassword?.errors?.['required'] && confirmPassword?.touched">*Password is required</div>
+                </div>
+            </div>
 
-        <label for="confirm-password">Confirm Password:
-        <input type="password" id="confirm-password" placeholder="Confirm your password"></label>
+        </div>
 
-        <button type="submit" class="submit-btn" [disabled]="!signUpForm.valid">Submit</button>
+        <!-- Submit button  -->
+        <button type="submit" class="submit-btn mt-3 mb-3" [disabled]="!signUpForm.valid">Submit</button>
+    
     </form>
 </div>
